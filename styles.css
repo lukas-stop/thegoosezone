@@ -1,12 +1,25 @@
 body {
-    background-color: white;
+    font-family: "VT323", Arial;
     font-size: 20px;
+    background-image: url("./assets/windows\ xp\ bg.jpg");
 }
 
-nav ul {
-    list-style-type: none;
-    display: flex;
+.terminalContainer {
+    background-color: black;
+    color: white;
+    height: 450px;
+    width: 600px;
+    padding: 10px;
 }
-nav li {    
-    padding: 0 5px;
+.fakeoutputContainer, .inputContainer {
+    width: 100%;
+    border: solid red 2px;
+}
+
+.inputPreText {
+    display: inline;
+}
+.blinkingUnderscore {
+    display: inline;
+    font-weight: 900;
 }
