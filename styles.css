@@ -1,25 +1,137 @@
 body {
-    font-family: "VT323", Arial;
-    font-size: 20px;
-    background-image: url("./assets/windows\ xp\ bg.jpg");
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;    
+    background-color: #f1e5e2;
+    display: flex;
 }
 
-.terminalContainer {
-    background-color: black;
-    color: white;
-    height: 450px;
-    width: 600px;
+a:hover, a:focus {
+    background-color: rgba(216, 130, 238, 0.75);
+}
+
+/* sidebar styling */
+
+.mainSidebarContainer {
+    height: 100vh;
+    min-width: 475px;
+    margin-right: 5px;
+    margin-left: 10px;
+    position: relative;
+    overflow: hidden;
+}
+/*TODO: find a cleaner fix for adding a background that doesn't interfere w z-index */
+.sidebarBackground {
+    position: absolute;
+    z-index: -3;
+    /* background-color: black; */
+    background-image: url("./assets/design references/white-parchment-paper-texture-3520760061.jpg");    
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+}
+
+/* Header content */
+.pageTitleContainer {
+    display: block;
+    max-width: 329px;
+    height: 79px;
+    background-image: url("./assets/journal\ stickers/title-bg.png");
+    background-size: cover;
+    background-repeat: none;
+    margin-top: 5px;
+    font-family: 'Caveat', 'Arial', sans-serif;
+    font-size: 26px;
+    color: #3e2a14;
+    text-shadow: -4px -4px 0 #f8f3ed,-4px -3px 0 #f8f3ed,-4px -2px 0 #f8f3ed,-4px -1px 0 #f8f3ed,-4px 0px 0 #f8f3ed,-4px 1px 0 #f8f3ed,-4px 2px 0 #f8f3ed,-4px 3px 0 #f8f3ed,-4px 4px 0 #f8f3ed,-3px -4px 0 #f8f3ed,-3px -3px 0 #f8f3ed,-3px -2px 0 #f8f3ed,-3px -1px 0 #f8f3ed,-3px 0px 0 #f8f3ed,-3px 1px 0 #f8f3ed,-3px 2px 0 #f8f3ed,-3px 3px 0 #f8f3ed,-3px 4px 0 #f8f3ed,-2px -4px 0 #f8f3ed,-2px -3px 0 #f8f3ed,-2px -2px 0 #f8f3ed,-2px -1px 0 #f8f3ed,-2px 0px 0 #f8f3ed,-2px 1px 0 #f8f3ed,-2px 2px 0 #f8f3ed,-2px 3px 0 #f8f3ed,-2px 4px 0 #f8f3ed,-1px -4px 0 #f8f3ed,-1px -3px 0 #f8f3ed,-1px -2px 0 #f8f3ed,-1px -1px 0 #f8f3ed,-1px 0px 0 #f8f3ed,-1px 1px 0 #f8f3ed,-1px 2px 0 #f8f3ed,-1px 3px 0 #f8f3ed,-1px 4px 0 #f8f3ed,0px -4px 0 #f8f3ed,0px -3px 0 #f8f3ed,0px -2px 0 #f8f3ed,0px -1px 0 #f8f3ed,0px 0px 0 #f8f3ed,0px 1px 0 #f8f3ed,0px 2px 0 #f8f3ed,0px 3px 0 #f8f3ed,0px 4px 0 #f8f3ed,1px -4px 0 #f8f3ed,1px -3px 0 #f8f3ed,1px -2px 0 #f8f3ed,1px -1px 0 #f8f3ed,1px 0px 0 #f8f3ed,1px 1px 0 #f8f3ed,1px 2px 0 #f8f3ed,1px 3px 0 #f8f3ed,1px 4px 0 #f8f3ed,2px -4px 0 #f8f3ed,2px -3px 0 #f8f3ed,2px -2px 0 #f8f3ed,2px -1px 0 #f8f3ed,2px 0px 0 #f8f3ed,2px 1px 0 #f8f3ed,2px 2px 0 #f8f3ed,2px 3px 0 #f8f3ed,2px 4px 0 #f8f3ed,3px -4px 0 #f8f3ed,3px -3px 0 #f8f3ed,3px -2px 0 #f8f3ed,3px -1px 0 #f8f3ed,3px 0px 0 #f8f3ed,3px 1px 0 #f8f3ed,3px 2px 0 #f8f3ed,3px 3px 0 #f8f3ed,3px 4px 0 #f8f3ed,4px -4px 0 #f8f3ed,4px -3px 0 #f8f3ed,4px -2px 0 #f8f3ed,4px -1px 0 #f8f3ed,4px 0px 0 #f8f3ed,4px 1px 0 #f8f3ed,4px 2px 0 #f8f3ed,4px 3px 0 #f8f3ed,4px 4px 0 #f8f3ed;
+}
+
+/* Nav Styling */
+.navContainer {
+    margin-top: 50px;
+    margin-left: 15px;
+    height: fit-content;
+    width: 300px;
+    background-image: url("./assets/journal stickers/flower\ background.png");
+    font-family: 'Alegreya SC', 'Times New Roman', 'Serif';
+    font-size: 40px;
     padding: 10px;
 }
-.fakeoutputContainer, .inputContainer {
+.navContainer .internalBorder {
+    padding: 5px;     
+    background-color: rgba(248, 245, 243, 0.96);
+}
+.navContainer .fancyBorder {
     width: 100%;
-    border: solid red 2px;
+    height: 75px;
+    background-image: url("./assets/design references/blumen-clipart-sticker-vintage-1619625027jHG-3271901332.png"); 
+    background-position: 15% 50%;
+    background-size: 150%;
+}
+.navContainer ul {
+    list-style-type: none;
+}
+.navContainer a {
+    color: #3e2a14;
+    text-decoration: none;
 }
 
-.inputPreText {
-    display: inline;
+
+/* Last Commit Styling*/
+
+.commitStickyNote {
+    background-image: url("./assets/journal stickers/stickynote.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 325px;
+    height: 60px;
+    font-size: 28px;
+    font-family: 'Patrick Hand SC', 'Comic Sans', 'Sans Serif';
+    position: absolute;
+    z-index: 1;
+    left: 100px;
+    top: 475px;
 }
-.blinkingUnderscore {
-    display: inline;
-    font-weight: 900;
+.commitStickyNote p {
+    text-align: center;
+    margin-top: 8px;
 }
+
+/* Latest Piece Styling*/
+
+.latestPieceContainer {
+    width: 250px;
+    background-color: white;    
+    padding: 10px 5px;
+    box-shadow: inset 0px 0px 10px 0px rgb(238, 238, 238), -2px 3px 10px 0px #00000036;    
+    text-align: center;
+    font-size: 28px;
+    font-family: 'Shantell Sans', 'Comic Sans', 'Sans Serif';
+    position: absolute;
+    z-index: 2;
+    left: 150px;
+    bottom: 10px;
+    transform: rotate(10deg);
+}
+.latestPiecePreview {
+    margin: auto;
+    background-color: gray;
+    height: 200px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.466);    
+}
+.latestPieceContainer a {
+    color: #572300;
+}
+
+/* main content styling */
+/* Note: only display to user if screen size tablet or larger */
+.mainContentContainer {
+    background-color: blue;
+    height: 100vh;
+    width: 60vw; /* TODO: fix this sizing issue */
+    margin: 0px 20px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* TODO: media queries to fix the wack ass sizing issues*/

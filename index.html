@@ -7,21 +7,71 @@
     <title>Home | TheGooseZone</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caveat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya SC">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patrick Hand SC">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Shantell Sans">
     <script src="./js/terminalinputs.js"></script>
 </head>
 
 <body>
-    <div class="terminalContainer">
-        <div class="fakeoutputContainer">
-            <p>output that is displayed to the user</p>
-        </div>
-        <!-- contenteditable="true" allows it to be editable, but doesnt send info anywhere -->
-        <div class="inputContainer">
-            <p class="inputPreText">G:\Users\Visitor></p>
-            <p id="blinkingUnderscore" class="blinkingUnderscore">_</p><textarea id="terminalInput"
-                name="terminalInput"></textarea>
-        </div>
+    <div class="mainSidebarContainer">
+        <div class="sidebarBackground"></div>
+        <header>
+            <div class="pageTitleContainer">
+                <h1 style="position:absolute; z-index: 3; 
+                margin-left: 6px;">GOOSECABOOSE737</h1>
+                <img src="./assets/journal stickers/title-bg.png" width="425px"
+                    style="position: absolute; z-index: 2; top: 25px;" alt="" />
+                <img src="./assets/journal stickers/paper tear-home.png" width="475px"
+                    style="position: absolute; z-index: 1; top: -40px;" alt="" />
+            </div>
+        </header>
+        <img src="./assets/journal stickers/flower sticker2.png"
+            style="position: absolute; z-index: 4; right: 15px; top: 150px;" alt="">
+        <img src="./assets/journal stickers/flower sticker1.png"
+            style="position: absolute; z-index: 4; right: 15px; top: 245px;" alt="">
+        <nav>
+            <div class="navContainer">
+                <div class="internalBorder">
+                    <div class="fancyBorder">
+                    </div>
+                    <div>
+                        <ul>
+                            <li><a href="#">Art</a></li>
+                            <li><a href="#">Work</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="fancyBorder" style="transform: rotate(180deg) scaleX(1);"></div>
+                </div>
+            </div>
+        </nav>
+        <aside>
+            <div class="commitStickyNote">
+                <p>Last commit: 1/22/2024</p>
+            </div>
+            <div class="latestPieceContainer">
+                <div class="latestPiecePreview"></div>
+                <p><a href="#">my most recent piece</a></p>
+            </div>
+            <img src="./assets/journal stickers/lace.png" width="300px"
+                style="position: absolute; left: 200px; top: 350px;" alt="" />
+            <div>
+                <img src="./assets/journal stickers/washi tape2.png" height="350px" width="40px"
+                    style="position: absolute; z-index: -1; left: 45px; bottom: 20px;" alt="">
+                <img src="./assets/journal stickers/washi tape1.png" width="100px"
+                    style="position: absolute; z-index: -2; left: 35px; bottom: 100px;" alt="">
+            </div>
+        </aside>
     </div>
+
+    <!--only load content if not mobile size -->
+    <main>
+        <div class="mainContentContainer">
+            <p>DON't LOOK HERE!! IT'S NOT READY YET!!!</p>
+        </div>
+    </main>
 </body>
 
 </html>
