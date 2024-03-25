@@ -1,9 +1,23 @@
 @font-face {
     font-family: Gerak;
-    src:url('./assets/fonts/Gerak/Gerak.otf') format("opentype");
+    src:url('../assets/fonts/Gerak/Gerak.otf') format("opentype");
     font-weight: normal;
     font-style: normal;
 }
+
+/* ANIMATIONS */
+@keyframes slideInTop {
+    0% {
+      transform: translateY(-3%);
+      opacity: 0%;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 100%;
+    }
+  }
+
+/* STYLING */
 
 body {
     background-color: white;
@@ -16,7 +30,8 @@ a {
     text-decoration: none;
 }
 
-.mainContent {
+.mainContent {   
+    animation: 1s ease-out 0s 1 slideInTop; 
     height: 500px;
     width: 500px;
     position: relative;   
@@ -31,7 +46,7 @@ a {
     left: 40px;
 }
 
-.mainContent h1 {    
+.mainContent h1 {       
     font-weight: 200;
     font-style: italic;
     font-size: 18px;
@@ -50,7 +65,8 @@ a {
     background-color: #D4D4D4;
 }
 
-.mainContent nav ul {
+.mainContent nav ul {    
+    animation: 2s ease-out 0s 1 slideInTop;
     list-style-type: none;   
     font-family: 'Gerak', 'Comic Sans', sans-serif;    
     text-align: center;
@@ -66,15 +82,20 @@ a {
     align-items: center;
     text-align: center;
     color: white;
-    opacity: 60%;
 }
 
 footer {
     position: fixed;
     bottom: 0;
-    left: 0;
+    right: 0;
     background-color: #000;
     color: #fff;
     width: 100%;
-    text-align: right;
+    text-align: right;    
+    padding-right: 30px;
 }
+
+footer a {
+    font-style: italic;
+}
+
