@@ -24,7 +24,7 @@ a {
     margin: 10vh auto;
 }
 
-.mainContent img {
+.mainContent .bgImg {
     position: absolute;
     z-index: -1;
     top: -25px;
@@ -61,12 +61,12 @@ a {
 
 /* PLACEHOLDER */
 .controls {
-    background-color: #575757;
     width: 100px;
     margin-left: 45%;
     align-items: center;
     text-align: center;
     color: white;
+    opacity: 60%;
 }
 
 footer {
