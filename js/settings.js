@@ -5,16 +5,54 @@ window.addEventListener("load", (event) => {
     document.body.classList.add("lightMode");
     settingsMenu.classList.add("settingsLightMode");
     document.getElementById("playIcon").style.filter = "invert(0)";
+    document.getElementById("pauseIcon").style.filter = "invert(0)";
 
     document.getElementById("DarkModeBtn").checked = false;
     document.getElementById("SimpleFontBtn").checked = false;
-    document.getElementById("AnimationsBtn").checked = true;
 });
-
 
 var bgIMGPNG = document.getElementById("bgImgPNGJS");
 var bgIMGGIF = document.getElementById("bgImgGIFJS");
 
+// ----------------------------------------
+//  ANIMATIONS TOGGLE
+// ----------------------------------------
+
+var animationsToggle = document.getElementById("AnimationsBtn");
+//var playBtnAnimationToggle = document.getElementById("playAnimationBtn");
+var animationActive = false;
+
+console.log(animationsToggle.checked);
+animationsToggle.addEventListener("click", (event) => { toggleAnimation(animationsToggle.checked) });
+//playBtnAnimationToggle.addEventListener("click", (event) => { toggleAnimation(animationActive) });
+
+//TODO: check implentation (freeze frame over random png?)
+function toggleAnimation(checkAnimation) {
+    if (checkAnimation === true) {
+        console.log(checkAnimation);
+        console.log("turning on animation");
+
+        bgIMGGIF.removeAttribute("hidden");
+        //pauseIcon.removeAttribute("hidden");
+        bgIMGPNG.setAttribute("hidden", "");
+        //playIcon.setAttribute("hidden", "");
+
+        //animationActive = true;
+        //animationsToggle.checked = true;
+    }
+    else {
+        console.log(checkAnimation);
+        console.log("turning off animation");
+
+        bgIMGGIF.setAttribute("hidden", "");
+        //pauseIcon.setAttribute("hidden", "");
+        bgIMGPNG.removeAttribute("hidden");
+        //playIcon.removeAttribute("hidden");
+
+        //animationActive = false;
+        //animationsToggle.checked = false;
+    }
+}
 
 
 // ----------------------------------------
@@ -43,6 +81,7 @@ function darkModeActive() {
     document.body.classList.add("darkMode");
 
     document.getElementById("playIcon").style.filter = "invert(1)";
+    document.getElementById("pauseIcon").style.filter = "invert(1)";
     bgIMGGIF.style.filter = "invert(1)";
     bgIMGPNG.style.filter = "invert(1)";
 }
@@ -54,6 +93,7 @@ function darkModeInActive() {
     document.body.classList.add("lightMode");
 
     document.getElementById("playIcon").style.filter = "invert(0)";
+    document.getElementById("pauseIcon").style.filter = "invert(0)";
     bgIMGGIF.style.filter = "invert(0)";
     bgIMGPNG.style.filter = "invert(0)";
 }
@@ -76,21 +116,3 @@ simpleFontToggle.addEventListener("change", function () {
     }
 });
 
-// ----------------------------------------
-//  ANIMATIONS TOGGLE
-// ----------------------------------------
-
-var animationsToggle = document.getElementById("AnimationsBtn");
-
-//TODO: check implentation (freeze frame over random png?)
-animationsToggle.addEventListener("change", function () {
-    if (animationsToggle.checked) {
-        console.log("Animation on");
-        bgIMGGIF.style.visibility = "visible";
-        bgIMGPNG.style.visibility = "hidden";
-    } else {
-        console.log("Animation off");
-        bgIMGGIF.style.visibility = "hidden";
-        bgIMGPNG.style.visibility = "visible";
-    }
-});

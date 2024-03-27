@@ -63,6 +63,7 @@ a {
     position: relative;   
     align-items: center; 
     margin: 10vh auto;
+    text-align: center;
 }
 
 .mainContent .bgImg {
@@ -79,7 +80,7 @@ a {
     font-size: 18px;
     color: var(--headerText);
     margin-bottom: 50px; 
-    margin-left: 50px;   
+    margin-left: -40%;   
 }
 
 .mainContent a {   
@@ -88,6 +89,10 @@ a {
 
 .mainContent a:hover, .mainContent a:focus {
     background-color: var(--hoverFocusColor);
+}
+
+.mainContent nav {
+    margin-top: 13%; /* styling related */
 }
 
 .mainContent nav ul {    
@@ -100,14 +105,23 @@ a {
     padding: 10px;    
 }
 
-/* PLACEHOLDER */
-.controls {
+/* button {
     width: 100px;
-    margin-left: 45%;
     align-items: center;
     text-align: center;
     color: white;
+    cursor: pointer;
+    border: none;
+    background: none;  
+    margin-left: 5%;  */
+    /* styling thing,, looks nicer */
+/*
 }
+*/
+/*
+button:hover, button:focus {
+    background-color: var(--hoverFocusColor);
+} */
 
 footer {
     position: fixed;
