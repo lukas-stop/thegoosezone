@@ -1,3 +1,23 @@
+/* Dark/Light themes */
+.lightMode {
+    --bodyBackground: white;
+    --mainText: black;
+    --mainLinkText: black;
+    --headerText: #575757;
+    --footerBackground: black;
+    --footerText: white;
+}
+.darkMode {
+    --bodyBackground: black;
+    --mainText: white;
+    --mainLinkText: white;
+    --headerText: #a8a8a8;
+    --footerBackground: white;
+    --footerText: black;
+}
+
+/* Font settings */
+
 @font-face {
     font-family: Gerak;
     src:url('../assets/fonts/Gerak/Gerak.otf') format("opentype");
@@ -20,13 +40,13 @@
 /* STYLING */
 
 body {
-    background-color: white;
+    background-color: var(--bodyBackground);
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
-    color: #fff;
+    color: var(--mainLinkText);
     text-decoration: none;
 }
 
@@ -50,15 +70,13 @@ a {
     font-weight: 200;
     font-style: italic;
     font-size: 18px;
-    color: #575757;
+    color: var(--headerText);
     margin-bottom: 50px; 
     margin-left: 50px;   
 }
 
-.mainContent a {
-    color: black;
+.mainContent a {   
     font-size: 3em;
-    text-decoration: none;
 }
 
 .mainContent a:hover, .mainContent a:focus {
@@ -88,8 +106,8 @@ footer {
     position: fixed;
     bottom: 0;
     right: 0;
-    background-color: #000;
-    color: #fff;
+    background-color: var(--footerBackground);
+    color: var(--footerText);
     width: 100%;
     text-align: right;    
     padding-right: 30px;
@@ -97,5 +115,6 @@ footer {
 
 footer a {
     font-style: italic;
+    color: var(--footerText);
 }
 

@@ -10,23 +10,23 @@
 </head>
 
 <body>
-    <div class="settingsMenu">
+    <div class="settingsMenu" id="settingsMenuJS">
         <h1>Settings</h1>
         <!-- Dark mode - Inverts colors -->
         <p>Darkmode: On <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" name="DarkModeBtn" id="DarkModeBtn" checked="false">
                 <span class="slider round"></span>
             </label></p>
         <!-- Simple font mode - makes all fonts the same (arial) -->
-        <p>Simple Font Mode: On <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label></p>
+        <!-- <p>Simple Font Mode: On <label class="switch"> -->
+        <!-- <input type="checkbox"> -->
+        <!-- <span class="slider round"></span> -->
+        <!-- </label></p> -->
         <!-- Animations - turns all animations on/off by defaults -->
-        <p>Animations: On <label class="switch">
-                <input type="checkbox" checked="true">
-                <span class="slider round"></span>
-            </label></p>
+        <!-- <p>Animations: On <label class="switch"> -->
+        <!-- <input type="checkbox" checked="true"> -->
+        <!-- <span class="slider round"></span> -->
+        <!-- </label></p> -->
     </div>
     <div class="mainContent">
         <h1>GooseCaboose737</h1>
@@ -45,5 +45,7 @@
         <p><a href="https://github.com/lukas-stop/thegoosezone">Last Commit: 3/25/2024</a></p>
     </footer>
 </body>
+
+<script src="./js/settings.js"></script>
 
 </html>
