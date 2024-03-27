@@ -6,6 +6,9 @@
     --headerText: #575757;
     --footerBackground: black;
     --footerText: white;
+    --hoverFocusColor: #D4D4D4;
+
+    transition: all 0.5s ease-out;
 }
 .darkMode {
     --bodyBackground: black;
@@ -14,6 +17,9 @@
     --headerText: #a8a8a8;
     --footerBackground: white;
     --footerText: black;
+    --hoverFocusColor: #414141;
+
+    transition: all 0.5s ease-out;
 }
 
 /* Font settings */
@@ -80,7 +86,7 @@ a {
 }
 
 .mainContent a:hover, .mainContent a:focus {
-    background-color: #D4D4D4;
+    background-color: var(--hoverFocusColor);
 }
 
 .mainContent nav ul {    

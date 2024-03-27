@@ -13,15 +13,19 @@
     <div class="settingsMenu" id="settingsMenuJS">
         <h1>Settings</h1>
         <!-- Dark mode - Inverts colors -->
-        <p>Darkmode: On <label class="switch">
+        <p>Darkmode:
+            <label class="switch">
                 <input type="checkbox" name="DarkModeBtn" id="DarkModeBtn" checked="false">
                 <span class="slider round"></span>
-            </label></p>
+            </label>
+        </p>
         <!-- Simple font mode - makes all fonts the same (arial) -->
-        <!-- <p>Simple Font Mode: On <label class="switch"> -->
-        <!-- <input type="checkbox"> -->
-        <!-- <span class="slider round"></span> -->
-        <!-- </label></p> -->
+        <p>Simple Font Mode:
+            <label class="switch">
+                <input type="checkbox" name="SimpleFontBtn" id="SimpleFontBtn" checked="false">
+                <span class="slider round"></span>
+            </label>
+        </p>
         <!-- Animations - turns all animations on/off by defaults -->
         <!-- <p>Animations: On <label class="switch"> -->
         <!-- <input type="checkbox" checked="true"> -->
@@ -31,18 +35,19 @@
     <div class="mainContent">
         <h1>GooseCaboose737</h1>
         <nav>
-            <ul>
+            <ul id="homeNavMenu">
                 <li><a href="./work.html">Work</a></li>
                 <li><a href="./art.html">Art</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
-        <div class="controls"><img src="./assets/design references/play icon.svg" height="25px;" /></div>
-        <img class="bgImg" src="./assets/design references/home-sketch-bg.gif" ; height="470px" ; />
+        <div class="controls"><img src="./assets/design references/play icon.svg" height="25px;" id="playIcon" /></div>
+        <img class="bgImg" src="./assets/design references/home-sketch-bg.gif" height="470px" id="bgImg" />
     </div>
 
     <footer>
-        <p><a href="https://github.com/lukas-stop/thegoosezone">Last Commit: 3/25/2024</a></p>
+        <!-- TODO: hook up to api to track this instead of doing manual tracking -->
+        <p><a href="https://github.com/lukas-stop/thegoosezone">Last Commit: 3/27/2024</a></p>
     </footer>
 </body>
 
