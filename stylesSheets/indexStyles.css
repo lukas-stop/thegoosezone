@@ -70,6 +70,7 @@ a {
     z-index: -1;
     top: -25px;
     left: 40px;
+    filter: invert(0);
 }
 
 .mainContent h1 {       

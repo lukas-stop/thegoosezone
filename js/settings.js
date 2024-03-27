@@ -5,12 +5,15 @@ window.addEventListener("load", (event) => {
     document.body.classList.add("lightMode");
     settingsMenu.classList.add("settingsLightMode");
     document.getElementById("playIcon").style.filter = "invert(0)";
-    document.getElementById("bgImg").style.filter = "invert(0)";
 
     document.getElementById("DarkModeBtn").checked = false;
     document.getElementById("SimpleFontBtn").checked = false;
+    document.getElementById("AnimationsBtn").checked = true;
 });
 
+
+var bgIMGPNG = document.getElementById("bgImgPNGJS");
+var bgIMGGIF = document.getElementById("bgImgGIFJS");
 
 
 
@@ -40,7 +43,8 @@ function darkModeActive() {
     document.body.classList.add("darkMode");
 
     document.getElementById("playIcon").style.filter = "invert(1)";
-    document.getElementById("bgImg").style.filter = "invert(1)";
+    bgIMGGIF.style.filter = "invert(1)";
+    bgIMGPNG.style.filter = "invert(1)";
 }
 
 function darkModeInActive() {
@@ -50,7 +54,8 @@ function darkModeInActive() {
     document.body.classList.add("lightMode");
 
     document.getElementById("playIcon").style.filter = "invert(0)";
-    document.getElementById("bgImg").style.filter = "invert(0)";
+    bgIMGGIF.style.filter = "invert(0)";
+    bgIMGPNG.style.filter = "invert(0)";
 }
 
 // ----------------------------------------
@@ -68,5 +73,24 @@ simpleFontToggle.addEventListener("change", function () {
     } else {
         console.log("Simple Font Mode off");
         document.getElementById("homeNavMenu").style.fontFamily = "'Gerak', 'Comic Sans', sans-serif";
+    }
+});
+
+// ----------------------------------------
+//  ANIMATIONS TOGGLE
+// ----------------------------------------
+
+var animationsToggle = document.getElementById("AnimationsBtn");
+
+//TODO: check implentation (freeze frame over random png?)
+animationsToggle.addEventListener("change", function () {
+    if (animationsToggle.checked) {
+        console.log("Animation on");
+        bgIMGGIF.style.visibility = "visible";
+        bgIMGPNG.style.visibility = "hidden";
+    } else {
+        console.log("Animation off");
+        bgIMGGIF.style.visibility = "hidden";
+        bgIMGPNG.style.visibility = "visible";
     }
 });
