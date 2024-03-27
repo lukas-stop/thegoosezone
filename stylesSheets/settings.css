@@ -71,6 +71,36 @@
     border-radius: 50%;
   }
 
+  /* gear icon */
+  .settingsMenuToggle {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .gearIcon {
+    filter: invert(1);
+    height: 4em;
+  }
+
+  .gearIcon:hover, .gearIcon:focus {
+    animation: gearRotate 8s infinite linear;
+  }
+
+  .settingsMenuToggle:hover, .settingsMenuToggle:focus {
+    background-color: var(--settingsHoverFocusColor);
+  }
+
+  
+
+  @keyframes gearRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+
   /* Dark/Light modes */
 
   .settingsDarkMode {

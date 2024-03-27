@@ -7,6 +7,7 @@
     --footerBackground: black;
     --footerText: white;
     --hoverFocusColor: #D4D4D4;
+    --settingsHoverFocusColor: #414141;
 
     transition: all 0.5s ease-out;
 }
@@ -18,6 +19,7 @@
     --footerBackground: white;
     --footerText: black;
     --hoverFocusColor: #414141;
+    --settingsHoverFocusColor: #D4D4D4;
 
     transition: all 0.5s ease-out;
 }
@@ -104,24 +106,6 @@ a {
 .mainContent nav li {        
     padding: 10px;    
 }
-
-/* button {
-    width: 100px;
-    align-items: center;
-    text-align: center;
-    color: white;
-    cursor: pointer;
-    border: none;
-    background: none;  
-    margin-left: 5%;  */
-    /* styling thing,, looks nicer */
-/*
-}
-*/
-/*
-button:hover, button:focus {
-    background-color: var(--hoverFocusColor);
-} */
 
 footer {
     position: fixed;

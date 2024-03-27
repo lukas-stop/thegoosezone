@@ -19,12 +19,10 @@ var bgIMGGIF = document.getElementById("bgImgGIFJS");
 // ----------------------------------------
 
 var animationsToggle = document.getElementById("AnimationsBtn");
-//var playBtnAnimationToggle = document.getElementById("playAnimationBtn");
 var animationActive = false;
 
-console.log(animationsToggle.checked);
+//console.log(animationsToggle.checked);
 animationsToggle.addEventListener("click", (event) => { toggleAnimation(animationsToggle.checked) });
-//playBtnAnimationToggle.addEventListener("click", (event) => { toggleAnimation(animationActive) });
 
 //TODO: check implentation (freeze frame over random png?)
 function toggleAnimation(checkAnimation) {
@@ -33,9 +31,7 @@ function toggleAnimation(checkAnimation) {
         console.log("turning on animation");
 
         bgIMGGIF.removeAttribute("hidden");
-        //pauseIcon.removeAttribute("hidden");
         bgIMGPNG.setAttribute("hidden", "");
-        //playIcon.setAttribute("hidden", "");
 
         //animationActive = true;
         //animationsToggle.checked = true;
@@ -45,9 +41,7 @@ function toggleAnimation(checkAnimation) {
         console.log("turning off animation");
 
         bgIMGGIF.setAttribute("hidden", "");
-        //pauseIcon.setAttribute("hidden", "");
         bgIMGPNG.removeAttribute("hidden");
-        //playIcon.removeAttribute("hidden");
 
         //animationActive = false;
         //animationsToggle.checked = false;
@@ -80,10 +74,9 @@ function darkModeActive() {
     document.body.classList.remove("lightMode");
     document.body.classList.add("darkMode");
 
-    document.getElementById("playIcon").style.filter = "invert(1)";
-    document.getElementById("pauseIcon").style.filter = "invert(1)";
     bgIMGGIF.style.filter = "invert(1)";
     bgIMGPNG.style.filter = "invert(1)";
+    document.getElementById("gearIconJS").style.filter = "invert(0)";
 }
 
 function darkModeInActive() {
@@ -92,10 +85,9 @@ function darkModeInActive() {
     document.body.classList.remove("darkMode");
     document.body.classList.add("lightMode");
 
-    document.getElementById("playIcon").style.filter = "invert(0)";
-    document.getElementById("pauseIcon").style.filter = "invert(0)";
     bgIMGGIF.style.filter = "invert(0)";
     bgIMGPNG.style.filter = "invert(0)";
+    document.getElementById("gearIconJS").style.filter = "invert(1)";
 }
 
 // ----------------------------------------
