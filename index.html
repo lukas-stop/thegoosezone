@@ -5,27 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | TheGooseZone</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesSheets/indexStyles.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesSheets/settings.css" />
 </head>
 
 <body>
-    <h1>GooseCaboose737</h1>
-    <nav>
-        <ul>
-            <li><a href="./work.html">Work</a></li>
-            <li><a href="./art.html">Art</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="settingsMenu" id="settingsMenuJS">
+        <h1>SETTINGS</h1>
+        <!-- Dark mode - Inverts colors -->
+        <label for="DarkModeBtn" class="switch">Darkmode:
+            <input type="checkbox" name="DarkModeBtn" id="DarkModeBtn" checked="false">
+            <span class="slider round"></span>
+        </label>
 
-    <div class="zoruaDiv">
-        <p>A better site is coming soon...probably.</p>
-        <img src="./assets/poorly drawn zorua.png"
-            alt="A poorly drawn, small fox-like character who is upset.  They are standing in front of a mouse and keyboard.">
+        <!-- Simple font mode - makes all fonts the same (arial) -->
+        <label for="SimpleFontBtn" class="switch">Simple Font Mode:
+            <input type="checkbox" name="SimpleFontBtn" id="SimpleFontBtn" checked="false">
+            <span class="slider round"></span>
+        </label>
+
+        <!-- Animations - turns all animations on/off by defaults -->
+        <label form="AnimationsBtn"" class=" switch">Animations:
+            <input type="checkbox" name="AnimationsBtn" id="AnimationsBtn" checked="true">
+            <span class="slider round"></span>
+        </label>
+        <button class="settingsMenuToggle" id="settingsMenuToggleJS">
+            <img src="./assets/design references/gear.png" class="gearIcon" id="gearIconJS" />
+        </button>
     </div>
-    <footer>
-        <p>(placeholder) last commit 1/8/2024</p>
-    </footer>
+
+    <div class="mainContent">
+        <h1>GooseCaboose737</h1>
+        <nav>
+            <ul id="homeNavMenu">
+                <li><a href="./work.html">Work</a></li>
+                <li><a href="./art.html">Art</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <img class="bgImg" src="./assets/design references/home-sketch-bg.gif" height="470px" id="bgImgGIFJS" />
+        <img class="bgImg" src="./assets/design references/home sketch bg.png" height="470px" id="bgImgPNGJS" hidden />
+    </div>
 </body>
+
+<script src="./js/settings.js"></script>
 
 </html>

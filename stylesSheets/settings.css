@@ -1,0 +1,153 @@
+/* Animation */
+/* @keyframes menuDown {
+  0% {
+    top: -10.5em;
+  }
+  100% {
+    top: -1.5em;
+  }
+}
+
+.menuDownMovement {
+  animation: menuDown 0.5s linear forwards;
+  animation-iteration-count: 1;
+}
+
+.menuUpMovement {
+  animation: menuDown 0.5s linear forwards reverse;
+  animation-iteration-count: 1;
+} */
+
+
+/* Main Menu Settings */
+.settingsMenu {
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  position: absolute;
+  width: 230px;
+  padding: 20px;
+  font-size: 16px;
+  top: -10.5em;
+  left: 1em;
+  z-index: 1;
+}
+
+.openMenu {
+  top: -1.5em;
+}
+
+.settingsMenu h1 {
+  font-size: 24px;
+  font-weight: 600;    
+}
+
+/* slider base code from : https://www.w3schools.com/howto/howto_css_switch.asp
+
+adjusted for utility/accessibility corrections
+*/
+
+.switch {
+    position: relative;
+    display: block;
+    width: 200px;
+    height: 20px;
+    margin: 10px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;    
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 150px;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+    width: 50px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* gear icon */
+  .settingsMenuToggle {
+    display: block;
+    padding: 10px 20px 0px 20px;
+    width: fit-content;
+    border: none;
+    background: #000;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+  .gearIcon {
+    filter: invert(1);
+    height: 4em;
+  }
+
+  .gearIcon:hover, .gearIcon:focus {
+    animation: gearRotate 8s infinite linear;
+  }
+
+  .settingsMenuToggle:hover, .settingsMenuToggle:focus {
+    background-color: var(--settingsHoverFocusColor);
+  }
+
+  
+
+  @keyframes gearRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Dark/Light modes */
+
+  .settingsDarkMode {
+    background-color: white;
+    color: black;
+  }
+  .settingsLightMode {
+    background-color: black;
+    color: white;
+  }
