@@ -64,7 +64,7 @@ a {
     width: 500px;
     position: relative;   
     align-items: center; 
-    margin: 10vh auto;
+    margin: 20vh auto;
     text-align: center;
 }
 
@@ -107,19 +107,4 @@ a {
     padding: 10px;    
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: var(--footerBackground);
-    color: var(--footerText);
-    width: 100%;
-    text-align: right;    
-    padding-right: 30px;
-}
-
-footer a {
-    font-style: italic;
-    color: var(--footerText);
-}
 
