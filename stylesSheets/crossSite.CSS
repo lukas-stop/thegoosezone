@@ -1,0 +1,33 @@
+/* Dark/Light themes */
+.lightMode {
+    --bodyBackground: white;
+    --mainText: black;
+    --mainLinkText: black;
+    --headerText: #575757;
+    --footerBackground: black;
+    --footerText: white;
+    --hoverFocusColor: #D4D4D4;
+    --settingsHoverFocusColor: #414141;
+
+    transition: all 0.5s ease-out;
+}
+.darkMode {
+    --bodyBackground: black;
+    --mainText: white;
+    --mainLinkText: white;
+    --headerText: #a8a8a8;
+    --footerBackground: white;
+    --footerText: black;
+    --hoverFocusColor: #414141;
+    --settingsHoverFocusColor: #D4D4D4;
+
+    transition: all 0.5s ease-out;
+}
+
+/* Fonts */
+@font-face {
+    font-family: Gerak;
+    src:url('../assets/fonts/Gerak/Gerak.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
