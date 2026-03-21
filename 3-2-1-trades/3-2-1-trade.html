@@ -136,51 +136,26 @@
     
 </body>
 
-<!--
-            sudo code 
-
-            if trade contains pets of multiple years -> use 3 year rule
-            if trade contains pets of same year -> use 3 month rule
-
-
-            checkYear()
-                if year = year + 1 OR year = year -1 
-                    three year rule (may be equivalent) alert
-                if year = year
-                    three month rule alert
-                if year > year + 1 
-                    determine incriment 
-                if year < year - 1
-                    determine incriment
-
-            determineIncriment(input, request)
-
-                is year? 
-                    check year array for input value 
-                    if yes
-                        look in year array for input value, get index
-                        look in year array for requested value, get index
-                        determine which index is bigger, subtract larger by smaller
-                        if inputIndex > requestedIndex
-                            return inputIndex-requestedIndex
-                        else
-                            return requestedIndex-inputIndex
-                    return "error!"
-        -->
-    
 <script>
     let yearInput = document.getElementById("yearInput");
     let yearOutput = document.getElementById("yearOutput");
     let rarityInput = document.getElementById("rarityInput");
     let rarityOutput = document.getElementById("rarityOutput");
     let selectionDisplay = document.getElementById("selectionDisplay");
+
     
     function rarityLookup(inputTag) {
-         /* find in rarities array where the provided abbreviation matches
-            fetch that value and return it
+         /* 
+            finds the associated rarity info AND the index in which it exists in the object
+            index is used for rarity math later
          */
-        return rarities.find((rarityTag) => rarityTag.abbreviation === inputTag)
+        let lookupOutput = rarities.find(tag => tag.abbreviation === inputTag);
+        lookupOutput.rarityIndex = rarities.findIndex((rarityTag) => rarityTag.abbreviation === inputTag);        
+        return lookupOutput;
     }
+
+    let rarityDesc = rarityLookup(rarityInput.value);
+    console.log(`DEBUG: rarity deets `, rarityDesc);
 
     /* update the initial html display to show selected values 
         TODO: grammar fix, change text for consonants
@@ -188,18 +163,18 @@
     function updateSelectedHTML() 
         {   
             /* update what was selected*/
-            let inputTag = rarityInput.value;
-            console.log(`provided inputs: ${yearInput.value} ${inputTag}`)
-            rarityDesc = rarityLookup(rarityInput.value)
-
+            let inputTag = rarityInput.value;            
+                        
             selectionDisplay.style.visibility = "visible";
             selectionDisplay.style.removeProperty("display");
             rarityOutput.textContent = rarityDesc.tag;
-            yearOutput.textContent = yearInput.value;            
+            yearOutput.textContent = yearInput.value;
+            
+            //needs to be done every time something new is selected vvv
+            rarityDesc = rarityLookup(rarityInput.value)            
 
             /*
                 Update the list of equivalent values (should not be in a line)
-
                 show what's equivalent by the 3 year rule
             */
             let display3YearOutput = document.getElementById("display3YearOutput");
@@ -207,7 +182,6 @@
             //storage for later >.>
             let prevYear = +yearInput.value - 1;
             let nextYear = +yearInput.value + 1;
-
 
             /* 
                 TODO: catch flags for if 2010.  dont go up the chain if so
@@ -231,14 +205,85 @@
                 if newer than next year, decrease rarity tag depending on how far it is
                 2014 c = 2015 uc = 2016 euc = 2017 r...
                         if no more tag, multiply last tag by 2
+
+                find index of selectedYear
             */
-            
+         /* 
+                        TODO: debug -> breaks at lowest points :(   
 
+                        1. check if already at lowest value selected.  if so, then...
+                        - for old pets, jump straight to multiplying
+                        2. if not at lowest value, decrease the rarity by one
+                    */       
+            
             displayRemainingYearOutput.innerHTML = `<h3>By the 2:1 rule:</h3>`;
-            
+            let selectedYear = parseInt(yearInput.value);
+            console.log(`debug: year selected ${selectedYear}`)
+            if(yearInput.value <= 2010) {
+                    console.log("debug: too old!");                    
+                    return; //break if 2010 or older (tool doesn't work for anything older)}
+            }
+            else {
+                let multiFactor = 0; //storage 
+                //var newRarity = rarityDesc; 
+                let newRarity ; //storage
+                let lowHighFlag = false;
 
 
+                for (var i = 0; i < years.length; i++) {
+                    //console.log(`DEBUG: currently at: ${years[i]}`)
+                    if(years[i] === selectedYear) {
+                        console.log("debug: same year!");
+                        continue; //break for same year
+                    }
+                    if(years[i] <= 2009){
+                        continue; //break if 2008-2009 pet
+                    } 
+                    else if (years[i] < selectedYear) {
+                        //for pets older than current year
+                        multiFactor = selectedYear - years[i]; //how much older is it?
+                        console.log(`${years[i]} is ${multiFactor} years older`);
+                        
+                        //if OMGSC jump right to multiplying
+                        if (rarityDesc.tag === "OMG so common" || lowHighFlag ) {
+                            newRarity = rarityDesc; //make sure newrarity is omgsc
+                            newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                            lowHighFlag = true;
+                        }
+                        else {
+                            //if newrarity is set and the tag is omgsc, swap to multiplying
+                            if (newRarity != undefined && newRarity.tag === "OMG so common") {
+                                newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                                lowHighFlag = true;
+                            }
+                            newRarity = rarities[rarityDesc.rarityIndex - multiFactor];
+                        }
+                        console.log(newRarity);
+
+
+                        
+                        // }
+                        // else {
+                        //     //console.log(newRarity);                        
+                        //     newRarity = rarities[rarityDesc.rarityIndex - multiFactor];
+                        //     console.log(newRarity);
+                        // }
+                        
+                        // if (rarityDesc.tag === "OMG so common") { 
+                        //     //console.log("DEBUG: already low!  multiplying...")
+                        //     //skip straight to multiplying
+                        //     newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                        // }
+                        // else {                                                    
+                        //     //console.log(rarityDesc.rarityIndex - multiFactor);
+                        //     newRarity = rarities[rarityDesc.rarityIndex - multiFactor];
+                        //     console.log(newRarity);
+                        // }
+                    }
+                }
+            }
         }
+        
 
     yearInput.addEventListener("change", updateSelectedHTML);
     rarityInput.addEventListener("change", updateSelectedHTML);

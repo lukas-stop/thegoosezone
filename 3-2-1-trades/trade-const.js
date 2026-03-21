@@ -21,7 +21,7 @@ const rarities = [
     },
     {
         tag: "Very uncommon",
-        abbreviation: "vc"
+        abbreviation: "vuc"
     },
     {
         tag: "Extremely uncommon",
