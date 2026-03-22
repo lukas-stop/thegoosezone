@@ -87,7 +87,10 @@
 
         <div id="selectionDisplay" class="selectionDisplay" style="visibility: hidden; display: none;"><p>A <span id="rarityOutput"></span> from <span id="yearOutput"></span> is worth...</p>
             <div id="display3YearOutput"></div>
-            <div id="displayRemainingYearOutput"></div>
+            <div id="display21RuleOutput">
+                <h3>By the 2:1 rule:</h3>
+                <ul id="21RuleOutput"></ul>
+            </div>
         </div>
         
 
@@ -192,11 +195,7 @@
                     OR </br>
                     One ${rarityDesc.tag} from ${nextYear}</p>
                 `
-            let displayRemainingYearOutput = document.getElementById("displayRemainingYearOutput");
-            
-     
-            
-            displayRemainingYearOutput.innerHTML = `<h3>By the 2:1 rule:</h3>`;
+            let displayRemainingYearOutput = document.getElementById("display21RuleOutput");
             let selectedYear = parseInt(yearInput.value);
             //console.log(`debug: year selected ${selectedYear}`)
             if(yearInput.value <= 2010) {
@@ -292,27 +291,37 @@
                             //is the new rarity now omgsr?    
                             //note: dont multiply by multifact you need to keep track of omgsrs :/                    
                             if (temp === 10) {
-                                newRarity.tag = rarities[temp - 1].tag;
-                                newRarity.abbreviation = rarities[temp - 1].tag;
+                                newRarity.tag = rarities[temp].tag;
+                                newRarity.abbreviation = rarities[temp].tag;
                             }                        
                             //set the new rarity values to the increase rarity
                             else {
-                                if (temp > 11) {
+                                if (temp > 10) {
                                     newRarity.tag = `${2 * omgsrCount} OMG so rares`;
                                     newRarity.abbreviation = rarityDesc.abbreviation;
                                     highFlag = true;
                                     omgsrCount = omgsrCount + 1;
                                 }
                                 else {
-                                    newRarity.tag = rarities[temp - 1].tag;
-                                    newRarity.abbreviation = rarities[temp - 1].abbreviation;
+                                    newRarity.tag = rarities[temp].tag;
+                                    newRarity.abbreviation = rarities[temp].abbreviation;
                                 }
                             }
                         }
                     }
                     output.push(newRarity);
                 }
-                console.log(output);
+
+                //console.log(output); //debug
+                //print the 2:1 rule outputs here vvv
+                let list = document.getElementById("21RuleOutput");
+                list.innerHTML = ''; //clear previous outputs
+
+                Object.keys(output).forEach(key => {
+                        var li = document.createElement('li');
+                        li.innerText = `${output[key].tag} from ${output[key].year}`;
+                        list.appendChild(li);
+                    })
             }
         }
     yearInput.addEventListener("change", updateSelectedHTML);
