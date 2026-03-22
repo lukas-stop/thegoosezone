@@ -218,69 +218,101 @@
             
             displayRemainingYearOutput.innerHTML = `<h3>By the 2:1 rule:</h3>`;
             let selectedYear = parseInt(yearInput.value);
-            console.log(`debug: year selected ${selectedYear}`)
+            //console.log(`debug: year selected ${selectedYear}`)
             if(yearInput.value <= 2010) {
                     console.log("debug: too old!");                    
                     return; //break if 2010 or older (tool doesn't work for anything older)}
             }
             else {
                 let multiFactor = 0; //storage 
-                //var newRarity = rarityDesc; 
-                let newRarity ; //storage
+                let output = []; 
+                let newRarity; //storage
                 let lowHighFlag = false;
 
+                console.log(`DEBUG: selected rarity ${rarityDesc.tag}`)
 
+                //seperating this step to (hopefully) make rarity calcualtions better
                 for (var i = 0; i < years.length; i++) {
-                    //console.log(`DEBUG: currently at: ${years[i]}`)
-                    if(years[i] === selectedYear) {
-                        console.log("debug: same year!");
-                        continue; //break for same year
-                    }
-                    if(years[i] <= 2009){
+                    newRarity = {}; //each entry should start as empty object
+
+                    if(years[i] <= 2009) {
                         continue; //break if 2008-2009 pet
-                    } 
+                    }
+                    else if (years[i] === selectedYear) {
+                        //include current year in list for consistency 
+                        newRarity.year = years[i];
+                        newRarity.offset = 0;
+                        
+                        output.push(newRarity);
+                    }
                     else if (years[i] < selectedYear) {
                         //for pets older than current year
                         multiFactor = selectedYear - years[i]; //how much older is it?
-                        console.log(`${years[i]} is ${multiFactor} years older`);
-                        
-                        //if OMGSC jump right to multiplying
-                        if (rarityDesc.tag === "OMG so common" || lowHighFlag ) {
-                            newRarity = rarityDesc; //make sure newrarity is omgsc
-                            newRarity.tag = `${2 * multiFactor} OMG so commons`;
-                            lowHighFlag = true;
-                        }
-                        else {
-                            //if newrarity is set and the tag is omgsc, swap to multiplying
-                            if (newRarity != undefined && newRarity.tag === "OMG so common") {
-                                newRarity.tag = `${2 * multiFactor} OMG so commons`;
-                                lowHighFlag = true;
-                            }
-                            newRarity = rarities[rarityDesc.rarityIndex - multiFactor];
-                        }
-                        console.log(newRarity);
+                        //console.log(`DEBUG: ${years[i]} is ${multiFactor} years older`);
 
+                        //set the year and difference from current year
+                        newRarity.year = years[i];
+                        newRarity.offset = multiFactor;
+                        
+                        output.push(newRarity);
+                    }
+                    else {
+                        //new pets newer than current year
+                        multiFactor =   years[i] - selectedYear; //how much newer is it?
+                        //console.log(`DEBUG: ${years[i]} is ${multiFactor} years newer`);
 
+                        //set the year and difference from current year
+                        newRarity.year = years[i];
+                        newRarity.offset = multiFactor;
                         
-                        // }
-                        // else {
-                        //     //console.log(newRarity);                        
-                        //     newRarity = rarities[rarityDesc.rarityIndex - multiFactor];
-                        //     console.log(newRarity);
-                        // }
-                        
-                        // if (rarityDesc.tag === "OMG so common") { 
-                        //     //console.log("DEBUG: already low!  multiplying...")
-                        //     //skip straight to multiplying
-                        //     newRarity.tag = `${2 * multiFactor} OMG so commons`;
-                        // }
-                        // else {                                                    
-                        //     //console.log(rarityDesc.rarityIndex - multiFactor);
-                        //     newRarity = rarities[rarityDesc.rarityIndex - multiFactor];
-                        //     console.log(newRarity);
-                        // }
+                        output.push(newRarity);
                     }
                 }
+
+                // if (rarityDesc.tag === "OMG so common" || lowHighFlag) {
+                //             //check if there's already an omgsc in the output
+                //             newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                //             newRarity.abbreviation = rarityDesc.abbreviation;                                
+                //             lowHighFlag = true;
+                //         }
+                //         else {
+                //             //decrease the rarity by one
+                //             // newrarity = currentrarity - 1       
+                //             // let temp = rarityDesc.rarityIndex - multiFactor  
+                //             // console.log(`year ${years[i]} | temp ${temp}`)      
+                //             // if (temp === 1) {
+                //             //     newRarity.tag = rarities[0].tag;
+                //             //     newRarity.abbreviation = rarities[0].abbreviation;
+                //             // }
+                //             // else if (temp < 1 ) {
+                //             //     newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                //             //     newRarity.abbreviation = rarityDesc.abbreviation;                                
+                //             //     lowHighFlag = true;
+                //             // }             
+                //             // else {
+                //             //     newRarity.tag = rarities[temp].tag;
+                //             //     newRarity.abbreviation = rarities[temp].abbreviation;
+                //             // }
+                            
+
+                //             // let temp = multiFactor - 1;
+                            
+                //             // console.log(temp);
+                //             // if (temp === 0) {
+                //             //     //index is gonna be omgsc
+                //             //     continue;
+                //             // }
+                            
+                //             // //let temp = rarityDesc.rarityIndex - multiFactor; //index of new rarity
+
+                //             // let x = rarities[temp].tag;
+                //             // let y = rarities[temp].abbreviation;
+
+                //             // newRarity.tag = x;
+                //             // newRarity.abbreviation = y;
+                //         }
+                
+                console.log(output);
             }
         }
         
