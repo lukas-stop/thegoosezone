@@ -262,7 +262,9 @@
                                     newRarity.abbreviation = rarities[temp].abbreviation;
                                 }
                                 else {
-                                    newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                                    //multiply by how far away from the first omgsc appearance is                                   
+                                    
+                                    newRarity.tag = `${2 * (temp * -1)} OMG so commons`;
                                     newRarity.abbreviation = rarityDesc.abbreviation;
                                 }
                             }
@@ -302,8 +304,8 @@
                                     omgsrCount = omgsrCount + 1;
                                 }
                                 else {
-                                    newRarity.tag = rarities[temp].tag;
-                                    newRarity.abbreviation = rarities[temp].abbreviation;
+                                    newRarity.tag = rarities[temp - 1].tag;
+                                    newRarity.abbreviation = rarities[temp - 1].abbreviation;
                                 }
                             }
                         }
