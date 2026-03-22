@@ -194,27 +194,7 @@
                 `
             let displayRemainingYearOutput = document.getElementById("displayRemainingYearOutput");
             
-            /* 
-                if current next or prev year, skip
-                for each item in year array...
-
-                if older than prev year, incriment rarity tag depending on how far it is
-                (2014 c = 2013 vc = 2012 ec = 2011 omgsc)
-                        if no more tag, multiply last tag by 2
-                        (2011 omgsc = 2 2010 omgsc)
-                if newer than next year, decrease rarity tag depending on how far it is
-                2014 c = 2015 uc = 2016 euc = 2017 r...
-                        if no more tag, multiply last tag by 2
-
-                find index of selectedYear
-            */
-         /* 
-                        TODO: debug -> breaks at lowest points :(   
-
-                        1. check if already at lowest value selected.  if so, then...
-                        - for old pets, jump straight to multiplying
-                        2. if not at lowest value, decrease the rarity by one
-                    */       
+     
             
             displayRemainingYearOutput.innerHTML = `<h3>By the 2:1 rule:</h3>`;
             let selectedYear = parseInt(yearInput.value);
@@ -227,23 +207,26 @@
                 let multiFactor = 0; //storage 
                 let output = []; 
                 let newRarity; //storage
-                let lowHighFlag = false;
+                let lowFlag = false;
+                let highFlag = false;
+                let omgsrCount = 1;
 
                 console.log(`DEBUG: selected rarity ${rarityDesc.tag}`)
 
-                //seperating this step to (hopefully) make rarity calcualtions better
                 for (var i = 0; i < years.length; i++) {
                     newRarity = {}; //each entry should start as empty object
 
+                    /* SET YEAR DATA */
                     if(years[i] <= 2009) {
                         continue; //break if 2008-2009 pet
                     }
                     else if (years[i] === selectedYear) {
                         //include current year in list for consistency 
                         newRarity.year = years[i];
-                        newRarity.offset = 0;
-                        
-                        output.push(newRarity);
+                        newRarity.yearOffset = 0;
+                        newRarity.tag = rarityDesc.tag;
+                        newRarity.abbreviation = rarityDesc.abbreviation;
+                        newRarity.rarityIndex = rarityDesc.rarityIndex;
                     }
                     else if (years[i] < selectedYear) {
                         //for pets older than current year
@@ -252,75 +235,86 @@
 
                         //set the year and difference from current year
                         newRarity.year = years[i];
-                        newRarity.offset = multiFactor;
-                        
-                        output.push(newRarity);
+                        newRarity.yearOffset = multiFactor;
+
+                        /* SET RARITY DATA */
+
+                        //is the selected rarity currently omgsc?
+                        if (rarityDesc.rarityIndex === 0 || lowFlag) {
+                            //console.log("DEBUG: at lowest point!");
+                            newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                            newRarity.abbreviation = rarityDesc.abbreviation;
+                            lowFlag = true;
+                        }
+                        else {
+                            //decrease current rarity by one                            
+                            let temp = rarityDesc.rarityIndex  - multiFactor;
+
+                            //is the new rarity now omgsc?
+                            if (temp === 0) {
+                                newRarity.tag = rarities[0].tag;
+                                newRarity.abbreviation = rarities[0].abbreviation;
+                            }
+                            else {
+                                //if its above omgsc, add it.  if its below, multiply
+                                if (temp > 0) {
+                                    newRarity.tag = rarities[temp].tag;
+                                    newRarity.abbreviation = rarities[temp].abbreviation;
+                                }
+                                else {
+                                    newRarity.tag = `${2 * multiFactor} OMG so commons`;
+                                    newRarity.abbreviation = rarityDesc.abbreviation;
+                                }
+                            }
+                        }
                     }
                     else {
                         //new pets newer than current year
-                        multiFactor =   years[i] - selectedYear; //how much newer is it?
+                        multiFactor = years[i] - selectedYear; //how much newer is it?
                         //console.log(`DEBUG: ${years[i]} is ${multiFactor} years newer`);
-
-                        //set the year and difference from current year
                         newRarity.year = years[i];
-                        newRarity.offset = multiFactor;
-                        
-                        output.push(newRarity);
+                        newRarity.yearOffset = multiFactor;
+
+                        //is the selected rarity currently omgsr?
+                        //omgsr has index of 10 (remember arrays are -1)
+                        if (rarityDesc.rarityIndex === 10 || highFlag) {
+                            newRarity.tag = `${2 * omgsrCount} OMG so rares`;
+                            newRarity.abbreviation = rarityDesc.abbreviation;
+                            highFlag = true;
+                            omgsrCount = omgsrCount + 1;
+                        }
+                        else {
+                            //increase current rarity by one
+                            let temp = rarityDesc.rarityIndex + multiFactor;
+                            
+                            //is the new rarity now omgsr?    
+                            //note: dont multiply by multifact you need to keep track of omgsrs :/                    
+                            if (temp === 10) {
+                                newRarity.tag = rarities[temp - 1].tag;
+                                newRarity.abbreviation = rarities[temp - 1].tag;
+                            }                        
+                            //set the new rarity values to the increase rarity
+                            else {
+                                if (temp > 11) {
+                                    newRarity.tag = `${2 * omgsrCount} OMG so rares`;
+                                    newRarity.abbreviation = rarityDesc.abbreviation;
+                                    highFlag = true;
+                                    omgsrCount = omgsrCount + 1;
+                                }
+                                else {
+                                    newRarity.tag = rarities[temp].tag;
+                                    newRarity.abbreviation = rarities[temp].abbreviation;
+                                }
+                            }
+                        }
                     }
+                    output.push(newRarity);
                 }
-
-                // if (rarityDesc.tag === "OMG so common" || lowHighFlag) {
-                //             //check if there's already an omgsc in the output
-                //             newRarity.tag = `${2 * multiFactor} OMG so commons`;
-                //             newRarity.abbreviation = rarityDesc.abbreviation;                                
-                //             lowHighFlag = true;
-                //         }
-                //         else {
-                //             //decrease the rarity by one
-                //             // newrarity = currentrarity - 1       
-                //             // let temp = rarityDesc.rarityIndex - multiFactor  
-                //             // console.log(`year ${years[i]} | temp ${temp}`)      
-                //             // if (temp === 1) {
-                //             //     newRarity.tag = rarities[0].tag;
-                //             //     newRarity.abbreviation = rarities[0].abbreviation;
-                //             // }
-                //             // else if (temp < 1 ) {
-                //             //     newRarity.tag = `${2 * multiFactor} OMG so commons`;
-                //             //     newRarity.abbreviation = rarityDesc.abbreviation;                                
-                //             //     lowHighFlag = true;
-                //             // }             
-                //             // else {
-                //             //     newRarity.tag = rarities[temp].tag;
-                //             //     newRarity.abbreviation = rarities[temp].abbreviation;
-                //             // }
-                            
-
-                //             // let temp = multiFactor - 1;
-                            
-                //             // console.log(temp);
-                //             // if (temp === 0) {
-                //             //     //index is gonna be omgsc
-                //             //     continue;
-                //             // }
-                            
-                //             // //let temp = rarityDesc.rarityIndex - multiFactor; //index of new rarity
-
-                //             // let x = rarities[temp].tag;
-                //             // let y = rarities[temp].abbreviation;
-
-                //             // newRarity.tag = x;
-                //             // newRarity.abbreviation = y;
-                //         }
-                
                 console.log(output);
             }
         }
-        
-
     yearInput.addEventListener("change", updateSelectedHTML);
     rarityInput.addEventListener("change", updateSelectedHTML);
-    
 </script>
-
 </html>
 
