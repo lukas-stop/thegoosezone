@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3-2-1 Trading Guide</title>
+    <link rel="stylesheet" type="text/css" href="./3-2-1-styles.css" />
 
     <script src="trade-const.js"></script>
     <script>
-        /* Custom alert code (keeping seperate for now) */
+        /* TODO: move this to its own file??
+            Custom alert code (keeping here for now) */
 
         function waitYouBum(button) {
             button.setAttribute('disabled', true);
@@ -24,19 +26,11 @@
         };      
 
 </script>
-    
-
-    <style>
-        body {
-            font-family: "Calibri", sans-serif;
-        }
-    </style>
-
 </head>
 <body>  
-        <div style="text-align: center; border: solid black 3px; padding: 10px;" id="customAlertBox">
-            <p id="alertMessageContainer">
-                <h1 style="font-size: 2em">STOP!</h1>
+    <div class="customAlertBox" id="customAlertBox">
+        <p id="alertMessageContainer">
+            <h1 style="font-size: 2em">STOP!</h1>
                 This tool is a work in progress and is not currently<br>
                 intended to be used for high value trading!<br>
                 This tool does not currently check for rerelease pets<br>
@@ -46,99 +40,123 @@
                 For additional trading advice and resources, please <br>
                 check out the <a href="https://www.chickensmoothie.com/Forum/viewforum.php?f=135">trade guide forum</a>.
             </p>
-            <Button onload="waitYouBum()" onclick="hideAlert()">Okay!</Button>
-        </div>
+        <Button onload="waitYouBum()" onclick="hideAlert()">Okay!</Button>
+    </div>
     
     <main>
-        Select Year: 
-        <select id="yearInput"> 
-            <option value="2010">2010</option> 
-            <option value="2011">2011</option> 
-            <option value="2012">2012</option> 
-            <option value="2013">2013</option> 
-            <option value="2014">2014</option> 
-            <option value="2015">2015</option> 
-            <option value="2016">2016</option> 
-            <option value="2017">2017</option> 
-            <option value="2018">2018</option> 
-            <option value="2019">2019</option> 
-            <option value="2020">2020</option> 
-            <option value="2021">2021</option> 
-            <option value="2022">2022</option> 
-            <option value="2023">2023</option> 
-            <option value="2024">2024</option> 
-            <option value="2025">2025</option> 
-            <option value="2026" selected="selected">2026</option> 
-		</select> 
-        Select Rarity: 
-        <select id="rarityInput"> 
-            <option value="omgsc">OMG so common</option> 
-            <option value="ec">Extremely common</option> 
-            <option value="vc">Very common</option> 
-            <option value="c">Common</option>
-            <option value="uc" selected="selected">Uncommon</option>
-            <option value="vuc">Very uncommon</option>
-            <option value="euc">Extremely uncommon</option>
-            <option value="r">Rare</option>
-            <option value="vr">Very Rare</option>
-            <option value="er">Extremely Rare</option>
-            <option value="omgsr">OMG so Rare</option>
-		</select> 
+        <div>
+            <section>
+                <h1>3-2-1 Trading Tool!</h1>
+                <h2>version 1.0</h2>
+                <p>Tired of crunching numbers to figure out how many bulk pets you need for a trade?  Yeah, me too.</br>
+                    This tool was made to help alleviate some of the headache that comes with bulk trading and make it</br>
+                    easier to folks to tell if their lower-rarity trades are fair or not.</br>
+                    <nav>
+                        <ul>
+                            <li><a href="">CS Thread</a></li>
+                            <li>✦</li>
+                            <li><a href="">FAQ</a></li>
+                        </ul>
+                    </nav>
+                </p>
+                <p>Select the year your pet was released in and what the <a href="#rarity-info">rarity</a> of a given pet is.</p>
+                <div class="nodec18Warning"><p class="warningtext">WARNING!</p>
+                <p><b>This tool does not currently check for december 18th pets.</b></br>
+                    Pets released on december 18th may be worth more than you think!</br>
+                    Please ask the <a href="https://www.chickensmoothie.com/Forum/viewforum.php?f=135">"How much is this pet worth"</a> thread to get an accurate estimation on your december 18th pet's value!</p></div>
+                Select Year: 
+                <select id="yearInput" aria-label="Year Input"> 
+                    <option value="2010">2010</option> 
+                    <option value="2011">2011</option> 
+                    <option value="2012">2012</option> 
+                    <option value="2013">2013</option> 
+                    <option value="2014">2014</option> 
+                    <option value="2015">2015</option> 
+                    <option value="2016">2016</option> 
+                    <option value="2017">2017</option> 
+                    <option value="2018">2018</option> 
+                    <option value="2019">2019</option> 
+                    <option value="2020">2020</option> 
+                    <option value="2021">2021</option> 
+                    <option value="2022">2022</option> 
+                    <option value="2023">2023</option> 
+                    <option value="2024">2024</option> 
+                    <option value="2025">2025</option> 
+                    <option value="2026" selected="selected">2026</option> 
+                </select> 
+                Select Rarity: 
+                <select id="rarityInput" aria-label="Rarity Input"> 
+                    <option value="omgsc">OMG so common</option> 
+                    <option value="ec">Extremely common</option> 
+                    <option value="vc">Very common</option> 
+                    <option value="c">Common</option>
+                    <option value="uc" selected="selected">Uncommon</option>
+                    <option value="vuc">Very uncommon</option>
+                    <option value="euc">Extremely uncommon</option>
+                    <option value="r">Rare</option>
+                    <option value="vr">Very Rare</option>
+                    <option value="er">Extremely Rare</option>
+                    <option value="omgsr">OMG so Rare</option>
+                </select> 
 
-        <div id="selectionDisplay" class="selectionDisplay" style="visibility: hidden; display: none;"><p>A <span id="rarityOutput"></span> from <span id="yearOutput"></span> is worth...</p>
-            <div id="display3YearOutput"></div>
-            <div id="display21RuleOutput">
-                <h3>By the 2:1 rule:</h3>
-                <ul id="21RuleOutput"></ul>
+                <div id="selectionDisplay" class="selectionDisplay" style="visibility: hidden; display: none;"><p>A <span id="rarityOutput"></span> from <span id="yearOutput"></span> is worth...</p>
+                    <div id="display3YearOutput"></div>
+                    <div id="display21RuleOutput">
+                        <h3>By the 2:1 rule:</h3>
+                        <ul id="21RuleOutput"></ul>
+                    </div>
+                </div>
+        </section>
+        <section>
+            <div id="rarity-info">
+                <h2>Rarity Guide</h2>
+                <p>As of the <a href="https://www.chickensmoothie.com/Forum/viewtopic.php?f=16&t=4897637">2023 rarity change</a>, all pets have one of 11 rarities:</p>
+                <ul id="defaultRarities">
+                    <script>
+                        let defaultRarityDisplay = document.getElementById("defaultRarities");
+                        rarities.forEach(item => {
+                            //TODO: condense this (i know i can be done >:[ )
+                            newTag = document.createElement('li');
+
+                            newTag.innerHTML = `${item.tag} </br>`;
+                            defaultRarityDisplay.appendChild(newTag);
+                                
+                            //adds images for rarity bars vv
+                            let rarityBar = document.createElement('img');
+
+                            //setting multiple attributes at once:                                                        
+                            let raritybarAttributes = {
+                                alt: `A partially filled container representing ${item.tag} pets.`,
+                                src: `./assets/starbar-${item.abbreviation}.png`
+                            }
+
+                            function setRarityImgAttributes(img, attributes) {
+                                for (let key in attributes) {
+                                    img.setAttribute(key, raritybarAttributes[key]);
+                                }
+                            }
+                            
+                            setRarityImgAttributes(rarityBar, raritybarAttributes);
+
+                            defaultRarityDisplay.appendChild(rarityBar);
+                        });
+                    </script>
+                </ul>
+                <p>If a pet does not yet have a rarity, such as recent releases, its value is purely subjective.  Most users historically tend to trade 
+                    unknown rarities for similar species/litters unitl the pet's rarity is determined.  Otherwise folks will often use outside factors, 
+                    such as token rates for events or successful trade data, to determine the worth of a given unknown rarity pet.</br>
+                    Note that there is currently no way to view the actual statistical rarity of a pet using publicly available data.  The only pets that
+                    are able to have a valid statistic of how many exist on a site are custom pets, as there is only one of each custom pet in existance.</br>
+                    <a href="https://www.chickensmoothie.com/Forum/viewtopic.php?f=119&t=5108967">Want to propose a change to view the stats of every pet on chicken smoothie?  I have a suggestion open for it here!</a>
+                </p>
             </div>
+        </section>
         </div>
-        
-
     </main>
-    <section>
-        <h1>Frequently Asked Questions</h1>
-        <h2>Why does this tool only look at pets up to 2010?</h2>
-        <p>
-            The short answer: there simply is not enough publicly available trading data to confirm that these trade guidelines would be accurate for pet worth.</br></br>
-            Pets from 2008-2009 have a <i>lot</i> of historic trade data that can elevate or deflate a pets value from a number of factors.  Demand is so entertwined to their current going rates that
-            rarity bars can't be the only factor in determining the value of these pets.  It is highly encouraged and advised to look at the <a href="https://www.chickensmoothie.com/Forum/viewforum.php?f=135">trade guide forum</a> for additional research on pet values
-            before trading any pet from this date/year range!
-        </p>
-        
-    </section>
-    <aside>
-        <h2>Rarity Guide</h2>
-        <p>As of the <a href="https://www.chickensmoothie.com/Forum/viewtopic.php?f=16&t=4897637">2023 rarity change</a>, all pets have one of 11 rarities:</p>
-        <ul id="defaultRarities">
-            <script>
-                let defaultRarityDisplay = document.getElementById("defaultRarities");
-                rarities.forEach(item => {
-                    //TODO: condense this (i know i can be done >:[ )
-                    newTag = document.createElement('li');
-
-                    newTag.innerHTML = `${item.tag} </br>`;
-                    defaultRarityDisplay.appendChild(newTag);
-                    
-                    //adds images for rarity bars vv
-                    let rarityBar = document.createElement('img');
-                    rarityBar.src = `./assets/starbar-${item.abbreviation}.png`;
-
-                    defaultRarityDisplay.appendChild(rarityBar);
-                });
-            </script>
-        </ul>
-        <p>If a pet does not yet have a rarity, such as recent releases, its value is purely subjective.  Most users historically tend to trade 
-            unknown rarities for similar species/litters unitl the pet's rarity is determined.  Otherwise folks will often use outside factors, 
-            such as token rates for events or successful trade data, to determine the worth of a given unknown rarity pet.</br>
-            Note that there is currently no way to view the actual statistical rarity of a pet using publicly available data.  The only pets that
-            are able to have a valid statistic of how many exist on a site are custom pets, as there is only one of each custom pet in existance.</br>
-            <a href="https://www.chickensmoothie.com/Forum/viewtopic.php?f=119&t=5108967">Want to propose a change to view the stats of every pet on chicken smoothie?  I have a suggestion open for it here!</a>
-        </p>
-    </aside>
-
     
 </body>
 
+<!-- RARITY CALCULATIONS vv  -->
 <script>
     let yearInput = document.getElementById("yearInput");
     let yearOutput = document.getElementById("yearOutput");

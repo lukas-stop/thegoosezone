@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Calibri", sans-serif;            
+    text-align: center; 
+    font-size: 18px;
+    background: #598be7;
+}
+body ul {
+    list-style: none;
+    padding-left: 0;
+}
+nav ul li {
+    display: inline;
+}
+main {
+    height: 100%;
+    background-color: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 30px;
+}
+.customAlertBox {
+    position: absolute;   
+    top: 50%;   
+    left: 50%;  
+    transform: translate(-50%, -100%);
+    padding: 25px;
+    width: max-content;
+    border: solid black 3px; 
+    background: white;
+}
+.nodec18Warning {
+    background: #e7e7e7;
+    border: solid black 3px;
+    margin: 5px 0;
+}
+.warningtext {
+    margin: 0;
+    font-weight: bold;
+    font-size: 2em;
+    color: #a31a1a;
+}
