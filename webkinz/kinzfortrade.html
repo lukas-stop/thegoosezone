@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade me your Webkinz!</title>
+    <link href="./kinzstyle.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" href="#">
+  </head>
+  <body>
+  <h1>Current Duplicates</h1>
+  <section>
+    <p>Interested in a trade?  Send me an email!</p>
+    <h2>Things to know before you trade</h2>
+    <p>I prefer webkinz without the tag but I will consider trades with plush with tags.<br>
+    I will occasionally trade multiples for one webkinz if I feel the values match. I tend to rely on average selling data between Mercari and Ebay for dollar values.<br>
+    I will not pay for shipping.  We will both pay for our own shipping.  You must provide me a tracking number.<br>
+    </p>
+  </section>
+<section>
+  <p>These are all the duplicates I currently have in my collection.  They are not currently listed for sale on any ecommerce platform.</p>
+<label for=hasTagFlag>Has tag?</label><input type=checkbox id=hasTagFlag name=hasTagFlag>
+<select id="tradeFilterSelect">
+  <option value="KinzKlips">Kinz Klips</option>
+  <option value="Zumbuddies">Zumbuddies</option>
+  <option value="MazinHamsters">Mazin' Hamsters</option>
+  <option value="WebkinzJr">Webkinz Jr</option>
+  <option value="SignatureWebkinz">Signature Webkinz</option>
+  <option value="LilKinz">Lil' Kinz</option>
+  <option value="Classic">Webkinz Classic</option>
+  <option value="2ndGen">Webkinz Next (2nd Gen)</option>
+  <option value="3rdGen">Webkinz Next (3rd Gen)</option>
+</select>
+ 
+<div class="forTrade"><img src="./kinzData/redwolfTest.jpg" alt="An image of a webkinz."/>
+    <p id="Plush" class="PlushText">Webkinz Signature Red Wolf</p>
+    <p><span id="Type">Classic</span> &#10022; <span id="Code">1234</span></p>
+</div>
+
+
+
+ <div id=DupeListContainer style="background-color: white;">
+ <ul>
+ <li>Black Wolf</li>
+ </ul>
+ </div>
+ 
+ </section>
+ 
+  <h1>In Search Of</h1>
+  <section><p>This is the list of all the webkinz I am currently seeking.  For a full, up to date list please view this spreadsheet:</p>
+<select id="wishlistFilterSelect">
+  <option value="KinzKlips">Kinz Klips</option>
+  <option value="Zumbuddies">Zumbuddies</option>
+  <option value="MazinHamsters">Mazin' Hamsters</option>
+  <option value="WebkinzJr">Webkinz Jr</option>
+  <option value="SignatureWebkinz">Signature Webkinz</option>
+  <option value="LilKinz">Lil' Kinz</option>
+  <option value="Classic">Webkinz Classic</option>
+  <option value="2ndGen">Webkinz Next (2nd Gen)</option>
+  <option value="3rdGen">Webkinz Next (3rd Gen)</option>
+</select>
+  </section>
+  
+  </body>
+  <script>
+    //pull data
+    // https://www.delftstack.com/howto/javascript/csv-to-array-in-javascript/
+    window.onload = fetch('./kinzData/duplicateKinz.csv')
+    .then(response => response.text())
+    .then(data => {
+        const rows = data.split('\n');
+        const csvArray = rows.map(row => row.split(','));
+        console.log(csvArray);
+    })
+    .catch(error => console.error('Error loading CSV:', error));
+
+    //data setup
+    var TagFlag = document.getElementById("hasTagFlag")
+
+    var tradeFilter = document.getElementById("tradeFilterSelect")
+    var tradeFilterOption = tradeFilter.options[tradeFilter.selectedIndex].value;
+
+    var wishlistFilter = document.getElementById("wishlistFilterSelect")
+    var wishlistFilterOption = wishlistFilter.options[wishlistFilter.selectedIndex].value;
+
+    // https://www.xjavascript.com/blog/get-selected-value-in-dropdown-list-using-javascript/ <-- from here
+    function getSelectedValue() {
+        const tradeFilterOption = tradeFilter.value;
+        //console.log("Selected value:", tradeFilter.value);  //debug
+    }    
+    
+    //event handlers 
+
+    tradeFilter.addEventListener('change', () => {        
+        getSelectedValue();
+        console.log("Selected for trade value:", tradeFilter.value)
+    });
+
+    wishlistFilter.addEventListener('change', () => {        
+        getSelectedValue();
+        console.log("Selected wishlist value:", wishlistFilter.value)
+    });
+  </script>
+</html>
