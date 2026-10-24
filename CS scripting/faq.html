@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | CS Pet Counter!</title>
+</head>
+<body>
+    <section>
+        <h1>F.A.Q.</h1>
+        <ul>
+            <li>
+                <div>
+                    <h2>Why'd you write this anyway?</h2>
+                    <p>As someone who has been playing trading and collecting games for over 10 years now, I can firmly say how much I despise demand based trading.<br>
+                    Here's some reading on my complaints as for why I don't agree with how pet worth is currently being determined on chicken smoothie: <a href="https://www.chickensmoothie.com/Forum/viewtopic.php?f=20&t=5108151">"How would you break down rarities without external guides?"</a><br>
+                    In short, C$ inflation is at an all time high, the current rares list (horror's list) is incredibly frustrating to deal with if you don't have pets that are on the list already, there isn't enough trading data for "low" demand pets, and because the site's age has caused a number of pets to max out at an OMG so rare status, it makes it hard to judge a pet by rarity.  I say this as someone who has a multi-year collection of pets and numerous high value/list pets, trading is incredibly frustrating and many users value demand above all else.  <b>I want to change that.</b><br>
+                    This script is a start.  If a pet is meant to be rare, I want physical proof of that pet's rarity.  I do not want to constantly have to rely on the artificially inflated price of a pet.  I want users who make their own lists to be able to have some framework to work off of, and I want to provide users with a method of viewing and understanding pet worth without having to rely on 5+ years of trading knowledge.<br>
+                    If a pink sorbet is worth more than a yellow sorbet, I want to know why.  I don't want someone to give me a whole history lesson on how a pink sorbet's worth grew over time.  I want a list that I can look at and see there are literally less pink sorbets than yellow sorbets in existance, which is why its rarer.<br>
+                    <a href="https://www.chickensmoothie.com/Forum/viewtopic.php?f=119&t=5108967">I had posted this suggestion to the suggestions forum a bit ago</a> with mixed reception.  A lot of people were concerned that this list would replace the current rares lists that exist for users.  That is not my intention in the slightest.  This script, and the data that comes from it, is mean to be a way to support user-generated lists and the reason why they determined a pet to be at the position its at.  This data is also meant to be used as a way to combat value pushing and to give folks a better understanding of just how much they are overpaying for certain pets, hopefully making trading fairer in the long run.<br>
+                    The current iteration of this script is not perfect, and there is more I wish to do but just do not have access to.  But if this script can help prevent someone from paying double what a pet is worth because they realized their pet is rarer than they thought, I will count it as a success.                
+                    </p> 
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>Did you code this all yourself?</h2>
+                    <p>Yes.  I used selenium for data scraping as it was a tool I used back in college for a senior project.  Part of my current job is data analysis, and most of my coding experience is in web development.<br>
+                    I refuse to use generative AI for this project so that I could ensure the code behaved exactly as I wanted it to and I would be able to explain the reasonings and origins for each section of code.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>What type of data was accessed?</h2>
+                    <p>I cannot stress enough that <b>the only data that was accessed is publicly accessible, meaning you do not need a CS account to view the accessed information.</b>.  This was done intentionally to minimize the possibility of accidentally recording any personal information about a user.  
+                    <br>At this time I do not wish to record anything about a user's active status, nor who the pet actively belongs to.  I want to look solely at a pet's existance on the site and information about a given pet as it exists in the archive.</p>
+                    <h3>Data that was accessed temporarily</h3>
+                    <ul>
+                        <li>
+                            <p>Owner Text - This script looks for the owner table row and checks the next element if it contains any text.  If it does, it assumes that the pet is "active" (as in a user owns the pet) and proceeds with recording the pet information.  The owner username is not recorded.</p>
+                        </li>
+                    </ul>
+                    <h3>Data that was accessed and stored</h3>
+                    <ul>
+                        <li><p>Pet ID - this script only stores pet IDs that belong to owners</p></li>
+                        <li><p>Adopted Date - this is recorded to help with manual data validation for pets that could not be recorded with the script.</p></li>
+                        <li><p>Rarity - this is recorded for analysis purposes and to help with manual data validation for pets that could not be recorded with the script.</p></li>
+                        <li><p>Pet Image - this is only recorded for pets that do not match those that exist in the CS archive.  This is so said pets can be manually cataloged for analysis at a later time.</p></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>Will you release the script publicly?</h2>
+                    <p><b>The short answer is <u>no.</u></b><br>
+                        I cannot in good conscience trust that this script, if released publicly, will only be used for analytic purposes.  Given the nature of how fickle economics on chicken smoothie can be, I fear that this script could be used by scammers or those attempting to cheat the system to target users with high value or older pets.  If you wish to have some method to rapidly check pet IDs for yourself and do not feel like manually flicking through pet urls for hours at a time, write your own script.<br><br>
+                        I will only release the script/code to members of chicken smoothie staff by request.  I will not release this script to the public.  If you are a member of CS staff and wish to view the code, please <a href="https://www.chickensmoothie.com/Forum/memberlist.php?mode=viewprofile&u=567610">reach out through private message on chicken smoothie</a> so I can confirm you are a staff member.</p>
+                </div>
+            </li>
+            <li>
+                <div><h2>Will you update this?</h2>
+                    <p>
+                        I would like to eventually update the list to include more accurate information, including only counting pets that are considered to be "active" based on chicken smoothie's standards (ideally, the same method used to determine pet rarities).  I do not have a way to access that information without accessing a user's profile, which I feel would be improper to do without authorization from the user themself or a staff member.<br>
+                        For now, this script is a proof of concept I want to present to the chicken smoothie community as a whole to show that something like this is possible.  
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </section>
+</body>
+</html>

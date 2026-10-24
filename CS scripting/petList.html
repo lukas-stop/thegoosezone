@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet List | CS Pet Counter!</title>
+    <style>
+        th, td {
+            border: 1px solid black;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p>Use the toggles to adjust how pets are displayed.  By default, it will sort pets by total count in ascending order.<br>
+        <i>I do not claim ownership over any of the images used on this page.  The images belong to <a href="https://www.chickensmoothie.com/">chickensmoothie.com</a>.</i></p>
+    </section>
+    <!-- TODO: update this to automatically add the years based on what exists in data -->
+    <select>
+        <option value="2008">2008</option>
+        <option value="2009">2009</option>
+        <option value="2010">2010</option>
+    </select>
+    <select>
+        <option value="omgsorare">OMG So Rare</option>
+        <option value="extremelyrare">Extremely Rare</option>
+        <option value="veryrare">Very Rare</option>
+        <option value="rare">Rare</option>
+        <option value="extremelyuncommon">Extremely Uncommon</option>
+        <option value="veryuncommon">Very Uncommon</option>
+        <option value="uncommon">Uncommon</option>
+        <option value="common">Common</option>        
+        <option value="verycommon">Very Common</option>        
+        <option value="extremelycommon">Extremely Common</option>
+        <option value="omgsocommon">OMG So Common</option>
+    </select>
+    <input type="submit" value="submit">
+
+    <table>
+        <tr>
+            <th>Pet Image</th>
+            <th>Release Date</th>
+            <th>Rarity</th>
+        </tr>
+        <!-- js handles populating this -->
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>
